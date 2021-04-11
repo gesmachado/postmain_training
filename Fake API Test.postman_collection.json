@@ -1,0 +1,276 @@
+{
+	"info": {
+		"_postman_id": "e31580bc-1ece-4e00-80b7-47d6c0d50b35",
+		"name": "Fake API Test",
+		"description": "https://jsonplaceholder.typicode.com/",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get all Posts",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Log\r",
+							"console.log(\"URL: \" + pm.variables.get(\"url_faker_api\"));\r",
+							"\r",
+							"// Verifica se o status da response é 200\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"// Verifica se existem 100 posts na response\r",
+							"pm.test(\"Response length is 100\", function () {\r",
+							"    pm.response.length == 100;\r",
+							"});\r",
+							"\r",
+							"//verifica se cada usuário tem 10 posts\r",
+							"pm.test(\"Users posts\", function () {\r",
+							"    \r",
+							"    var userPostQnt = {user1:0, user2:0, user3:0, user4:0, user5:0, \r",
+							"                       user6:0, user7:0, user8:0, user:0, user10:0};\r",
+							"                       \r",
+							"    for (var i = 0; i < 10; i++){\r",
+							"        for(var post in pm.response.json()){\r",
+							"            if(post.userId == i + 1){\r",
+							"                userPostQnt[i] += 1;\r",
+							"            }\r",
+							"        }\r",
+							"    }\r",
+							"    \r",
+							"        \r",
+							"    for(var postQnt in userPostQnt){\r",
+							"        if(postQnt < 10){\r",
+							"            return false;\r",
+							"        }\r",
+							"    }\r",
+							"    return true;\r",
+							"});\r",
+							"\r",
+							"//verifica o body do post 1\r",
+							"pm.test('Validating body of postId=1', function () {\r",
+							"    for(var post in pm.response.json()){\r",
+							"        if(post.userId == 1){\r",
+							"            if(post.body == 'quia et suscipit\\nsuscipit recusandae consequuntur expedita et cum\\nreprehenderit molestiae ut ut quas totam\\nnostrum rerum est autem sunt rem eveniet architecto'){\r",
+							"                return true;\r",
+							"            }\r",
+							"            return false;\r",
+							"        }\r",
+							"    }\r",
+							"    return false;\r",
+							"});\r",
+							"\r",
+							"//verifica o title do post 100\r",
+							"pm.test('Validating title of postId=100', function () {\r",
+							"    for(var post in pm.response.json()){\r",
+							"        if(post.userId == 100){\r",
+							"            if(post.title == 'at nam consequatur ea labore ea harum'){\r",
+							"                return true;\r",
+							"            }\r",
+							"            return false;\r",
+							"        }\r",
+							"    }\r",
+							"    return false;\r",
+							"});\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url_faker_api}}/posts",
+					"host": [
+						"{{url_faker_api}}"
+					],
+					"path": [
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all Comments",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Verifica se o status da response é 200\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url_faker_api}}/comments",
+					"host": [
+						"{{url_faker_api}}"
+					],
+					"path": [
+						"comments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all albums",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Verifica se o status da response é 200\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url_faker_api}}/albums",
+					"host": [
+						"{{url_faker_api}}"
+					],
+					"path": [
+						"albums"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all photos",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Verifica se o status da response é 200\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url_faker_api}}/photos",
+					"host": [
+						"{{url_faker_api}}"
+					],
+					"path": [
+						"photos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all todos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url_faker_api}}/todos",
+					"host": [
+						"{{url_faker_api}}"
+					],
+					"path": [
+						"todos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all users",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Verifica se o status da response é 200\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Leanne Graham\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Patricia Lebsack\");\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const all_users = {\r",
+							"  url : 'https://jsonplaceholder.typicode.com/users',\r",
+							"  method : 'GET'\r",
+							"};\r",
+							"pm.sendRequest(all_users, function (err, response) {\r",
+							"    var data = response.json();\r",
+							"    for(var i = 0; i < data.length; i++){\r",
+							"        if(data[i].name == \"Patricia Lebsack\"){\r",
+							"            pm.environment.set(\"user\", data[i]);\r",
+							"            return;\r",
+							"        }\r",
+							"    }\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url_faker_api}}/users",
+					"host": [
+						"{{url_faker_api}}"
+					],
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
