@@ -1,0 +1,78 @@
+{
+	"info": {
+		"_postman_id": "c2a9cc18-8283-4d94-87b7-47bd84523892",
+		"name": "Env Teste",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "https://postman-echo.com/get",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://postman-echo.com/get",
+					"protocol": "https",
+					"host": [
+						"postman-echo",
+						"com"
+					],
+					"path": [
+						"get"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://postman-echo.com/get?environment={{environment_type}}",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://postman-echo.com/get?environment={{environment_type}}",
+					"protocol": "https",
+					"host": [
+						"postman-echo",
+						"com"
+					],
+					"path": [
+						"get"
+					],
+					"query": [
+						{
+							"key": "environment",
+							"value": "{{environment_type}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://httpbin.org/get?globals={{var_test}}",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://httpbin.org/get?globals={{var_test}}",
+					"protocol": "https",
+					"host": [
+						"httpbin",
+						"org"
+					],
+					"path": [
+						"get"
+					],
+					"query": [
+						{
+							"key": "globals",
+							"value": "{{var_test}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
